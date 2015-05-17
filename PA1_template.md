@@ -4,6 +4,7 @@
 ## Loading and preprocessing the data
 
 ```r
+knitr::opts_chunk$set(fig.path='figure/')
 data <- read.csv("activity.csv")
 ```
 
@@ -15,7 +16,7 @@ totalStepsPerDay <- aggregate(steps ~ date, data, sum)
 hist(totalStepsPerDay$steps, main = paste("Total Steps Each Day"), col="blue", xlab="Number of Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![](figure/unnamed-chunk-2-1.png) 
 
 ```r
 meanTotalStepsPerDay <- mean(totalStepsPerDay$steps)
@@ -31,7 +32,7 @@ stepsPerInterval <- aggregate(steps ~ interval, data, mean)
 plot(stepsPerInterval$interval,stepsPerInterval$steps, type="l", xlab="Interval", ylab="Number of Steps",main="Average Number of Steps per Day by Interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![](figure/unnamed-chunk-3-1.png) 
 
 ```r
 maxInterval <- stepsPerInterval[which.max(stepsPerInterval$steps),1]
@@ -60,7 +61,7 @@ hist(totalStepsPerDay$steps, main = paste("Total Steps Each Day"), col="red", xl
 legend("topright", c("Imputed", "Non-imputed"), col=c("blue", "red"), lwd=10)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![](figure/unnamed-chunk-6-1.png) 
 
 
 ```r
@@ -94,4 +95,4 @@ library(lattice)
 xyplot(stepsPerInterval_i$steps ~ stepsPerInterval_i$interval|stepsPerInterval_i$dow, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![](figure/unnamed-chunk-10-1.png) 
